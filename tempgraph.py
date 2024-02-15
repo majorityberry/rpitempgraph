@@ -14,7 +14,7 @@ def main():
     for row in Data:
         Temp.append(row[0]/1000)
         timeArray = time.localtime(row[1])
-        strTime = time.strftime("%Y-%m-%d %H:%M:%S", timeArray)
+        strTime = time.strftime("%Y-%m-%d %H:%M", timeArray)
         Time.append(strTime)
 
     plt.plot(Time,Temp)
