@@ -1,6 +1,7 @@
 import sqlite3
 import time
 import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
 import sys
 
 def main():
@@ -14,10 +15,13 @@ def main():
     for row in Data:
         Temp.append(row[0]/1000)
         timeArray = time.localtime(row[1])
-        strTime = time.strftime("%Y-%m-%d %H:%M", timeArray)
+        strTime = time.strftime("%Y-%m-%d\n%H:%M", timeArray)
         Time.append(strTime)
 
-    plt.plot(Time,Temp)
+    fig,ax = plt.subplots()
+    ax.plot(Time,Temp)
+    ax.xaxis.set_major_locator(ticker.MultipleLocator(500))
+    #plt.plot(Time,Temp)
     plt.show()
     Conn.close()
 main()
